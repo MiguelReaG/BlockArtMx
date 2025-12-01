@@ -14,7 +14,9 @@ La app permite:
 
 # Instalación
 Clona o copia el proyecto en tu equipo:
+
 git clone https://github.com/MiguelReaG/BlockArtMx.git
+
 cd REGISTRO-IP-BLOCKCHAIN
 
 O descarga el ZIP del repo
