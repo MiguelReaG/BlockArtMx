@@ -11,6 +11,35 @@ La app permite:
 - Verificar la integridad de la cadena de bloques.
 - Simular un ataque/modificación a la blockchain para mostrar la corrupción de datos.
 
+## 🗂 Estructura del proyecto
+
+```text
+REGISTRO-IP-BLOCKCHAIN/
+├── Logo/
+│   └── blockartmx_Logo.png
+├── static/
+│   └── style.css
+├── templates/
+│   ├── base.html
+│   ├── dashboard.html
+│   ├── detalle_obra.html
+│   ├── index.html
+│   ├── login.html
+│   ├── mis_obras.html
+│   ├── nueva_obra.html
+│   ├── register.html
+│   ├── simular_ataque.html
+│   └── verificar.html
+├── uploads/
+│   ├── user_1/
+│   └── user_2/
+├── app.py
+├── blockchain.py
+├── blockchain.json
+├── config.py
+├── requirements.txt
+└── README.md
+
 
 # Instalación
 Clona o copia el proyecto en tu equipo:
