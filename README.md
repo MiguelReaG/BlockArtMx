@@ -39,7 +39,7 @@ REGISTRO-IP-BLOCKCHAIN/
 ├── config.py
 ├── requirements.txt
 └── README.md
-
+```text
 
 # Instalación
 Clona o copia el proyecto en tu equipo:
