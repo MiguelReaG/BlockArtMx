@@ -18,7 +18,7 @@ from blockchain import Blockchain
 # ----------------- Configuración básica -----------------
 
 app = Flask(__name__)
-app.secret_key = "super_secret_key_para_demo"  # cámbiala
+app.secret_key = "super_secret_key_para_demo"
 
 # MySQL 
 app.config["MYSQL_HOST"] = "localhost"
@@ -230,7 +230,7 @@ def enviar_correo_obra_registrada(destinatario, nombre_autor, titulo_obra,
     Incluye hash, ID de bloque y vista previa si es imagen.
     """
     msg = EmailMessage()
-    msg["Subject"] = f"✅ Tu obra '{titulo_obra}' ha sido registrada en BlockArtMx"
+    msg["Subject"] = f" Tu obra '{titulo_obra}' ha sido registrada en BlockArtMx"
     msg["From"] = f"BlockArtMx <{EMAIL_USER}>"
     msg["To"] = destinatario
 
@@ -650,3 +650,4 @@ def simular_ataque():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
