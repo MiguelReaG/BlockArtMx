@@ -1,0 +1,37 @@
+<!-- templates/nueva_obra.html -->
+{% extends "base.html" %}
+
+{% block title %}Registrar nueva obra{% endblock %}
+
+{% block content %}
+<section class="panel panel-form">
+    <h2>Registrar nueva obra</h2>
+    <p>Sube el archivo de tu obra y completa la información básica. Se guardará en la base de datos y se anclará en la blockchain.</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título de la obra</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Breve descripción de la obra"></textarea>
+
+        <label for="tipo">Tipo de obra</label>
+        <select id="tipo" name="tipo">
+            <option value="">Selecciona una opción</option>
+            <option>Arte digital</option>
+            <option>Fotografía</option>
+            <option>Música</option>
+            <option>Documento</option>
+            <option>Otro</option>
+        </select>
+
+        <label for="fecha_creacion">Fecha de creación de la obra</label>
+        <input type="date" id="fecha_creacion" name="fecha_creacion">
+
+        <label for="archivo">Archivo de la obra (png, jpg, jpeg, gif, pdf)</label>
+        <input type="file" id="archivo" name="archivo" required>
+
+        <button type="submit">Registrar obra</button>
+    </form>
+</section>
+{% endblock %}

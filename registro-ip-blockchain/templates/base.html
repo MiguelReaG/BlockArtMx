@@ -1,0 +1,53 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Registro IP en Blockchain{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div>
+            <h1 class="app-title">BlockArtMX</h1>
+            <p class="app-subtitle">Mini-blockchain para certificar obras digitales</p>
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('verificar') }}">Verificar obra</a>
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('dashboard') }}">Panel</a>
+                <a href="{{ url_for('logout') }}">Cerrar sesión ({{ session.get('user_nombre') }})</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Iniciar sesión</a>
+                <a href="{{ url_for('register') }}">Registrarse</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Mensajes flash -->
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+      {% if mensajes %}
+        <div class="flash-container">
+          {% for categoria, mensaje in mensajes %}
+            <div class="flash flash-{{ categoria }}">
+                {{ mensaje }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>Proyecto de Criptografía · Mini-blockchain · {{ 2025 }}</p>
+</footer>
+
+</body>
+</html>

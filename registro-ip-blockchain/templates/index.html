@@ -1,0 +1,49 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Inicio - Registro IP Blockchain{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h2>Bienvenido</h2>
+    <p>
+        Esta aplicación permite a creadores registrar sus obras digitales (arte, música, documentos)
+        y anclarlas en una mini-blockchain para demostrar autoría e integridad.
+    </p>
+    <ul>
+        <li>📌 <strong>Crea una cuenta</strong> si eres creador para registrar tus obras.</li>
+        <li>🔍 <strong>Usa la verificación</strong> para comprobar si una obra es auténtica.</li>
+        <li>🧩 La blockchain te permite detectar cualquier alteración en los registros.</li>
+    </ul>
+</section>
+
+<section class="panel">
+    <h2>Vista de la mini-blockchain</h2>
+    <p>Esta es la cadena actual de bloques registrada por la aplicación.</p>
+
+    <div class="tabla-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID bloque</th>
+                    <th>Timestamp</th>
+                    <th>Datos</th>
+                    <th>Prev Hash</th>
+                    <th>Hash actual</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bloque in cadena %}
+                <tr>
+                    <td>{{ bloque.id }}</td>
+                    <td>{{ bloque.timestamp }}</td>
+                    <td>{{ bloque.datos }}</td>
+                    <td class="mono">{{ bloque.prev_hash }}</td>
+                    <td class="mono">{{ bloque.hash_actual }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

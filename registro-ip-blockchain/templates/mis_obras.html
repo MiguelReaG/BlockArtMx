@@ -1,0 +1,49 @@
+<!-- templates/mis_obras.html -->
+{% extends "base.html" %}
+
+{% block title %}Mis obras registradas{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h2>Mis obras</h2>
+    {% if obras %}
+        <div class="tabla-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID obra</th>
+                        <th>Título</th>
+                        <th>Tipo</th>
+                        <th>Fecha creación</th>
+                        <th>Bloque (Blockchain)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obra in obras %}
+                    <tr>
+                        <td>{{ obra.id_obra }}</td>
+                        <td>{{ obra.titulo }}</td>
+                        <td>{{ obra.tipo or '-' }}</td>
+                        <td>{{ obra.fecha_creacion or '-' }}</td>
+                        <td>
+                            {% if obra.id_bloque_blockchain %}
+                                #{{ obra.id_bloque_blockchain }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('detalle_obra', id_obra=obra.id_obra) }}">Ver detalle</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No tienes obras registradas todavía.</p>
+        <p><a href="{{ url_for('nueva_obra') }}">Registrar mi primera obra</a></p>
+    {% endif %}
+</section>
+{% endblock %}

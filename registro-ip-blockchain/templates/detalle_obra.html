@@ -1,0 +1,71 @@
+<!-- templates/detalle_obra.html -->
+{% extends "base.html" %}
+
+{% block title %}Detalle de obra{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h2>Detalle de la obra</h2>
+
+    <h3>{{ obra.titulo }}</h3>
+    <p><strong>Autor:</strong> {{ obra.autor_nombre }}</p>
+    <p><strong>Tipo:</strong> {{ obra.tipo or '-' }}</p>
+    <p><strong>Fecha de creación declarada:</strong> {{ obra.fecha_creacion or '-' }}</p>
+    <p><strong>Descripción:</strong> {{ obra.descripcion or 'Sin descripción' }}</p>
+    <p><strong>Hash del archivo:</strong> <span class="mono">{{ obra.hash_archivo }}</span></p>
+
+    {# --- Vista previa del archivo --- #}
+    {% if obra.ruta_archivo %}
+        {% set url_archivo = url_for('ver_archivo', ruta=obra.ruta_archivo) %}
+        {% set ruta_lower = obra.ruta_archivo.lower() %}
+
+        <h3>Vista previa del archivo</h3>
+
+        {# Imágenes #}
+        {% if ruta_lower.endswith('.png') or ruta_lower.endswith('.jpg') or ruta_lower.endswith('.jpeg') or ruta_lower.endswith('.gif') %}
+            <div class="preview">
+                <img src="{{ url_archivo }}" alt="Vista previa de la obra" class="preview-img">
+            </div>
+
+        {# Audio #}
+        {% elif ruta_lower.endswith('.mp3') or ruta_lower.endswith('.wav') or ruta_lower.endswith('.ogg') %}
+            <div class="preview">
+                <audio controls>
+                    <source src="{{ url_archivo }}">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+
+        {# PDF #}
+        {% elif ruta_lower.endswith('.pdf') %}
+            <div class="preview">
+                <iframe src="{{ url_archivo }}" class="preview-frame"></iframe>
+                <p><a href="{{ url_archivo }}" target="_blank">Abrir PDF en otra pestaña</a></p>
+            </div>
+
+        {# Otros tipos de archivo #}
+        {% else %}
+            <p><a href="{{ url_archivo }}" target="_blank">Descargar / abrir archivo</a></p>
+        {% endif %}
+    {% else %}
+        <p>No hay archivo asociado.</p>
+    {% endif %}
+
+    <hr>
+
+    {% if bloque %}
+        <h3>Información en la blockchain</h3>
+        <p><strong>ID de bloque:</strong> {{ bloque.id }}</p>
+        <p><strong>Timestamp:</strong> {{ bloque.timestamp }}</p>
+        <p><strong>Datos del bloque:</strong> {{ bloque.datos }}</p>
+        <p><strong>Prev Hash:</strong> <span class="mono">{{ bloque.prev_hash }}</span></p>
+        <p><strong>Hash actual:</strong> <span class="mono">{{ bloque.hash_actual }}</span></p>
+    {% else %}
+        <p>Esta obra todavía no tiene bloque asociado en la blockchain.</p>
+    {% endif %}
+
+    <p style="margin-top:1rem;">
+        <a href="{{ url_for('mis_obras') }}">⬅ Volver a mis obras</a>
+    </p>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!-- templates/simular_ataque.html -->
+{% extends "base.html" %}
+
+{% block title %}Simular ataque a la blockchain{% endblock %}
+
+{% block content %}
+<section class="panel panel-form">
+    <h2>Simulación de ataque</h2>
+    <p>
+        Esta función modifica los datos de un bloque sin actualizar los hashes,
+        con el fin de demostrar cómo se rompe la integridad de la cadena.
+        Úsalo para la demostración en clase.
+    </p>
+
+    <form method="POST">
+        <label for="id_bloque">Selecciona el ID del bloque a alterar</label>
+        <select id="id_bloque" name="id_bloque" required>
+            {% for bloque in cadena %}
+                {% if bloque.id != 1 %}
+                <option value="{{ bloque.id }}">Bloque {{ bloque.id }} - {{ bloque.datos }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <button type="submit">Simular ataque</button>
+    </form>
+</section>
+
+<section class="panel">
+    <h2>Vista rápida de la cadena</h2>
+    <div class="tabla-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Datos</th>
+                    <th>Hash actual</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bloque in cadena %}
+                <tr>
+                    <td>{{ bloque.id }}</td>
+                    <td>{{ bloque.timestamp }}</td>
+                    <td>{{ bloque.datos }}</td>
+                    <td class="mono">{{ bloque.hash_actual }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

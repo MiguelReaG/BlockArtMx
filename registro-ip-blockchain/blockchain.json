@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "timestamp": "2025-11-29 14:20:21",
+        "datos": "Bloque génesis - Inicio de la cadena",
+        "prev_hash": "0",
+        "hash_actual": "dc5e8aea057531af45eca8acf8c37f48da88666650b2802fe5163ebcea2bb46f"
+    },
+    {
+        "id": 2,
+        "timestamp": "2025-11-29 14:36:07",
+        "datos": "AutorID: 1 | ObraID: 1 | Titulo: Lumberloon Royale | HashArchivo: e5f2a4ef5ab20120aabc5a1aef5068cfc28b5f4e52e1d04415153abd32b7b251",
+        "prev_hash": "dc5e8aea057531af45eca8acf8c37f48da88666650b2802fe5163ebcea2bb46f",
+        "hash_actual": "e94f5f93f41c0dd99cb94793c110a1e6d788dcce8fd1c658b978205785392d35"
+    },
+    {
+        "id": 3,
+        "timestamp": "2025-11-29 17:58:47",
+        "datos": "AutorID: 1 | ObraID: 2 | Titulo: Globin Crying Emote | HashArchivo: beb1903f69931d7f911053f474d26915945aba70dd90d18f53d94fd841577834 [DATOS ALTERADOS]",
+        "prev_hash": "e94f5f93f41c0dd99cb94793c110a1e6d788dcce8fd1c658b978205785392d35",
+        "hash_actual": "5de246b9220b38acf7f20ada81c1d809ad311fde1f5d0f5240b74b140f268c4b"
+    },
+    {
+        "id": 4,
+        "timestamp": "2025-11-29 18:22:38",
+        "datos": "AutorID: 1 | ObraID: 3 | Titulo: Banking Synchronization with CUDA | HashArchivo: 9b92a9167015e7e41210b455e36451ed2f6710d416b316c37f4841b7db26e7a8",
+        "prev_hash": "5de246b9220b38acf7f20ada81c1d809ad311fde1f5d0f5240b74b140f268c4b",
+        "hash_actual": "f3a5452b672b52d15bdf11bebd7f43ea5441f697dfb945e783156c2789bafc31"
+    },
+    {
+        "id": 5,
+        "timestamp": "2025-11-29 20:14:23",
+        "datos": "AutorID: 2 | ObraID: 4 | Titulo: blockartmx_Logo | HashArchivo: 563e6cce56af53d461e772c2072dcb8aafeac9720ec258f3555441fcf3cbf6af",
+        "prev_hash": "f3a5452b672b52d15bdf11bebd7f43ea5441f697dfb945e783156c2789bafc31",
+        "hash_actual": "6c61e39b68f1c73b04f28637ee818b3075cb475963f733ecca857dc214ad1973"
+    },
+    {
+        "id": 6,
+        "timestamp": "2025-11-29 22:21:08",
+        "datos": "AutorID: 2 | ObraID: 5 | Titulo: Logo_Games | HashArchivo: f806f1284280171c63221543a2174f6edb21b18ab981fbdd4025ffa939178892",
+        "prev_hash": "6c61e39b68f1c73b04f28637ee818b3075cb475963f733ecca857dc214ad1973",
+        "hash_actual": "0e858d4a13f29d9afc941ede210f6e7429392d0ddbcbcd5ddad1cd89d7528ed1"
+    }
+]

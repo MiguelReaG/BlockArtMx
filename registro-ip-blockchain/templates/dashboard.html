@@ -1,0 +1,26 @@
+<!-- templates/dashboard.html -->
+{% extends "base.html" %}
+
+{% block title %}Panel de usuario{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h2>Panel de {{ session.get('user_nombre') }}</h2>
+    <p>Desde aquí puedes gestionar tus obras registradas en la blockchain.</p>
+
+    <div class="grid-actions">
+        <a class="btn-card" href="{{ url_for('nueva_obra') }}">
+            ➕ Registrar nueva obra
+        </a>
+        <a class="btn-card" href="{{ url_for('mis_obras') }}">
+            🎨 Ver mis obras
+        </a>
+        <a class="btn-card" href="{{ url_for('verificar') }}">
+            🔍 Verificar una obra
+        </a>
+        <a class="btn-card" href="{{ url_for('simular_ataque') }}">
+            ⚠️ Simular ataque (demo)
+        </a>
+    </div>
+</section>
+{% endblock %}

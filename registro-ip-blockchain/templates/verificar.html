@@ -1,0 +1,74 @@
+<!-- templates/verificar.html -->
+{% extends "base.html" %}
+
+{% block title %}Verificar obra{% endblock %}
+
+{% block content %}
+<section class="panel panel-form">
+    <h2>Verificar autenticidad de una obra</h2>
+    <p>
+        Ingresa el ID de una obra registrada. Opcionalmente, sube un archivo que
+        supuestamente corresponde a la obra original para comparar su hash.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="id_obra">ID de la obra</label>
+        <input type="number" id="id_obra" name="id_obra" min="1" required>
+
+        <label for="archivo">Archivo para comparar (opcional)</label>
+        <input type="file" id="archivo" name="archivo">
+
+        <button type="submit">Verificar</button>
+    </form>
+</section>
+
+{% if obra %}
+<section class="panel">
+    <h2>Datos de la obra</h2>
+    <p><strong>ID obra:</strong> {{ obra.id_obra }}</p>
+    <p><strong>Título:</strong> {{ obra.titulo }}</p>
+    <p><strong>Autor:</strong> {{ obra.autor_nombre }}</p>
+    <p><strong>Tipo:</strong> {{ obra.tipo or '-' }}</p>
+    <p><strong>Fecha de creación:</strong> {{ obra.fecha_creacion or '-' }}</p>
+    <p><strong>Hash registrado del archivo:</strong> <span class="mono">{{ obra.hash_archivo }}</span></p>
+</section>
+
+{% if bloque %}
+<section class="panel">
+    <h2>Bloque en la blockchain</h2>
+    <p><strong>ID bloque:</strong> {{ bloque.id }}</p>
+    <p><strong>Timestamp:</strong> {{ bloque.timestamp }}</p>
+    <p><strong>Datos:</strong> {{ bloque.datos }}</p>
+    <p><strong>Prev Hash:</strong> <span class="mono">{{ bloque.prev_hash }}</span></p>
+    <p><strong>Hash actual:</strong> <span class="mono">{{ bloque.hash_actual }}</span></p>
+</section>
+{% endif %}
+{% endif %}
+
+{% if resultado_archivo %}
+<section class="panel">
+    <h2>Resultado de comparación de archivo</h2>
+    {% if resultado_archivo == 'OK' %}
+        <p class="ok">✅ El archivo subido coincide con el hash registrado. La obra es auténtica.</p>
+    {% else %}
+        <p class="error">❌ El archivo NO coincide con el hash registrado. Podría haber sido modificado.</p>
+    {% endif %}
+</section>
+{% endif %}
+
+{% if es_valida_cadena is not none %}
+<section class="panel">
+    <h2>Estado de la blockchain</h2>
+    {% if es_valida_cadena %}
+        <p class="ok">La cadena completa es válida. No se detectaron alteraciones.</p>
+    {% else %}
+        <p class="error">La cadena está CORRUPTA. Se detectaron las siguientes inconsistencias:</p>
+        <ul>
+            {% for e in errores_cadena %}
+            <li>{{ e }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endif %}
+{% endblock %}
