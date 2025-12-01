@@ -11,7 +11,7 @@ La app permite:
 - Verificar la integridad de la cadena de bloques.
 - Simular un ataque/modificación a la blockchain para mostrar la corrupción de datos.
 
-## 🗂 Estructura del proyecto
+# Estructura del proyecto
 
 ```text
 REGISTRO-IP-BLOCKCHAIN/
