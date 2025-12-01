@@ -40,7 +40,11 @@ REGISTRO-IP-BLOCKCHAIN/
 ├── requirements.txt
 └── README.md
 ```
+# Requisitos
 
+Python 3.10 o superior
+
+pip (gestor de paquetes de Python)
 # Instalación
 Clona o copia el proyecto en tu equipo:
 
